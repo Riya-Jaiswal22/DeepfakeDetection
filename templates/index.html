@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelProof - Deepfake Image Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">PixelProof</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <!---<li><a href="#about">About Us</a></li>
+                <li><a href="#previous-works">Previous Works</a></li>-->
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-container">
+        <div class="container">
+            <h1>Deepfake Image Detection</h1>
+            <form id="uploadForm" onsubmit="handleSubmit(event)" enctype="multipart/form-data">
+                <label class="label-file-input" for="fileInput">
+                    <span id="fileName">Choose an image</span>
+                </label>
+                <input id="fileInput" type="file" onchange="previewImage(event)" accept="image/*" name="files[]">
+                <img id="imagePreview" class="image-preview hidden" alt="Image Preview">
+                <button type="submit" disabled>
+                    <span id="buttonText">Upload & Detect</span>
+                </button>
+            </form>
+
+            <div id="loader" class="loader hidden"></div>
+
+            <div id="resultContainer" class="result-container"></div>
+            <p id="errorMessage" class="error"></p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
